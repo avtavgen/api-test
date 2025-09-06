@@ -1,19 +1,15 @@
-from pydantic import BaseModel
 from sqlmodel import SQLModel, Field
-from typing import Optional
 
 
-class User(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    email: str = Field(index=True, unique=True, nullable=False)
-    hashed_password: str
-
-
-class UserRequest(BaseModel):
+class UserBase(SQLModel):
+    name: str
     email: str
     password: str
 
 
-class UserResponse(BaseModel):
-    id: int
-    email: str
+class User(UserBase, table=True):
+    id: int = Field(default=None, nullable=False, primary_key=True)
+
+
+class UserCreate(UserBase):
+    pass

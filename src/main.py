@@ -1,26 +1,18 @@
-from contextlib import asynccontextmanager
+import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, Depends
-
-from src.db.core import engine
-from src.service.security import key_auth
+from fastapi import FastAPI
 from src.views.views import router
 
 load_dotenv('.env')
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    async with engine.begin() as conn:
-        await conn.run_sync(lambda conn: None)
-    yield
-    await engine.dispose()
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 app.include_router(router)
 
 
-@app.get("/", dependencies=[Depends(key_auth)])
+@app.get("/")
 def read_root():
     return {"message": "Server is running."}

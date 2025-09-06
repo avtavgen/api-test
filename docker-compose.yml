@@ -9,9 +9,9 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - postgres
+      - db
 
-  postgres:
+  db:
     image: postgres:17.6
     expose:
       - 5432
