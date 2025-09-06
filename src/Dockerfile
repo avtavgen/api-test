@@ -5,11 +5,12 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update \
-  && apt-get -y install netcat gcc postgresql \
-  && apt-get clean
+RUN apk update && apk add --no-cache \
+    musl-dev \
+    libpq-dev \
+    postgresql-dev
 
-COPY ./src/requirements.txt /app
+COPY ./requirements.txt /app
 
 RUN pip install --upgrade pip
 
