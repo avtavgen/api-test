@@ -13,7 +13,7 @@ This is a simple api crud application
 ## Clone the project
 
 ```
-git clone git@gitlab.vxg.io:vxg/cvp/services/smtp-provision-server.git
+git clone git@github.com:avtavgen/api-test.git
 ```
 
 ## Run local
