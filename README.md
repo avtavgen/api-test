@@ -49,7 +49,8 @@ coverage run -m pytest . && coverage report -m
 ### Run server
 
 ```
-docker-compose up -d --build
+docker compose up -d --build
+docker compose exec web alembic upgrade head
 ```
 
 ## API documentation
