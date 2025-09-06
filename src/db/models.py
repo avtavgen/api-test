@@ -1,3 +1,5 @@
+from typing import Optional
+
 from sqlmodel import SQLModel, Field
 
 
@@ -5,6 +7,7 @@ class UserBase(SQLModel):
     name: str
     email: str
     password: str
+    date: Optional[int] = None
 
 
 class User(UserBase, table=True):
