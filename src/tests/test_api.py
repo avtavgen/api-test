@@ -1,6 +1,7 @@
 import pytest
-from src.tests.core import async_client
+
 from src.settings import AUTH_TOKEN
+from src.tests.core import async_client
 
 USER_DATA = {"name": "test_user", "email": "test@email", "password": "12345"}
 
