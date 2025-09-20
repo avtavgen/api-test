@@ -1,6 +1,6 @@
 # async-api-project
 
-FastAPI app with simple crud functionality, implemented with different async technologies.
+FastAPI crud application, implemented with different async technologies.
 
 ## Preconditions:
 
