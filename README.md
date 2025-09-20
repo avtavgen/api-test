@@ -8,7 +8,10 @@ This is a simple api crud application
 
 - Python 3.12
 - FastAPI
-- Uvicorn
+- Pydantic
+- SQLModel
+- Asyncpg
+- Alembic
 
 ## Clone the project
 
