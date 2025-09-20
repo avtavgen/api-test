@@ -8,6 +8,7 @@ class UserBase(SQLModel):
     email: str
     password: str
     date: Optional[int] = None
+    order: Optional[int] = None
 
 
 class User(UserBase, table=True):

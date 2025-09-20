@@ -1,18 +1,12 @@
-import asyncio
 import os
-from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
-import anyio
 import pytest_asyncio
-from alembic import command, context
+from alembic import command
 from alembic.config import Config
-from asgi_lifespan import LifespanManager
-from fastapi import FastAPI, Depends, HTTPException, status
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncConnection
 from sqlmodel.ext.asyncio.session import AsyncSession
-from uvicorn import lifespan
 
 from src.db.core import get_session
 from src.main import app
@@ -53,7 +47,7 @@ async def run_async_upgrade() -> None:
 async def async_client() -> AsyncGenerator:
     app.dependency_overrides[get_session] = get_test_session  # type: ignore[attr-defined]
     app.dependency_overrides[key_sec] = mock_key_sec  # type: ignore[attr-defined]
-    # app.dependency_overrides[lifespan] = test_lifespan(app)  # type: ignore[attr-defined]
+
     await run_async_upgrade()
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
