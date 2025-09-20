@@ -1,8 +1,6 @@
-# api-test-project
+# async-api-project
 
-Fast API test project
-
-This is a simple api crud application
+FastAPI app with simple crud functionality, implemented with different async technologies.
 
 ## Preconditions:
 
@@ -16,7 +14,7 @@ This is a simple api crud application
 ## Clone the project
 
 ```
-git clone git@github.com:avtavgen/api-test.git
+git clone git@github.com:avtavgen/async-api.git
 ```
 
 ## Run local
